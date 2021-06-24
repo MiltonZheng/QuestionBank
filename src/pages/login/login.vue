@@ -32,6 +32,7 @@
                         <el-row>
                           <el-col :span='12'>
                             <el-button type="primary" @click="submitForm('ruleForm')"
+                                       @keydown.enter="submitForm('ruleForm')"
                                        style="margin-bottom: 20px;font-size: 20px; margin-right:5px; width:95%" id="loginBtn">登录
                             </el-button>
                           </el-col>
@@ -123,9 +124,6 @@ export default {
   display: table;
 }
 
-.loghust{
-  height: 100%;
-}
 
 .loginForm {
   display: table-cell;
@@ -154,10 +152,9 @@ export default {
 }
 
 .logMain {
-  padding: 0;
+  padding: 100px;
   background: url("http://hub.hust.edu.cn/images/login-1.jpg ") no-repeat;
   background-size: cover;
-
   box-shadow: inset 0.5px 0.2px 5px 0px #eeeeee;
 }
 

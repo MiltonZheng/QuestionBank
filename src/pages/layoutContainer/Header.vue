@@ -1,5 +1,5 @@
 <template>
-<div class="headerContainer main-backgroundColor">
+<div class="headerContainer">
   <div class="headerUp">
     <div class="headleft">
       <img

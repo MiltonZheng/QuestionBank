@@ -1,12 +1,16 @@
 .main-backgroundColor{
-    background-color: #545c64;
+    background-color: #f44336;
 }
 
 .main-backgroundColorLevel2{
-    background-color: #4d555c;
+    background-color: #ffaea2;
 }
 .main-backgroundColorLevel3{
     background-color:#314458 ;
+}
+
+.themeColor{
+
 }
 
 .color-danger{
@@ -14,4 +18,12 @@
 }
 .color-success{
     color: #67C23A;
+}
+
+.inactiveWord{
+    color: #909399;
+}
+
+.activeWord{
+    color: #ffffff;
 }

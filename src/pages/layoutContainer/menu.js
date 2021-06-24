@@ -1,28 +1,22 @@
 export  const  menu=[
     {
-        icon:"",
-        name:"公共课选课",
-        router:"/generalCourse",
-        id:"generalCourse",
+        icon:"el-icon-search",
+        name:"题库",
+        router:"/questionBank",
+        id:"questionBank",
     },
     {
-        icon:"",
-        name:"体育课选课",
-        id:"PECourse",
-        router:"/PECourse",
+        icon:"el-icon-document",
+        name:"组卷",
+        id:"formExam",
+        router:"/formExam",
 
     },
     {
-        icon:"",
-        name:"专业课选课",
-        router:"/majorCourse",
-        id:"majorCourse",
+        icon:"el-icon-user",
+        name:"个人中心",
+        router:"/personalInfo",
+        id:"personalInfo",
 
     },
-    {
-        icon:"",
-        name:"查看已选和退选",
-        router:"/CourseSelected",
-        id:"CourseSelected",
-    }
 ]

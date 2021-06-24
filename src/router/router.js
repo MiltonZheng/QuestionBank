@@ -27,47 +27,38 @@ const myRouter = new Router({
             children:[
                 {
                     path: "",
-                    redirect:"generalCourse"
+                    redirect:"questionBank"
                 },
                 {
-                    name:'generalCourse',
-                    path:'generalCourse',
-                    component:()=>import("../components/generalCourse.vue"),
+                    name:'questionBank',
+                    path:'questionBank',
+                    component:()=>import("../components/questionBank"),
                     meta:{
-                        title:"公共选修课"
+                        title:"题库"
                     }
                 },
                 {
-                    name:'PECourse',
-                    path:'PECourse',
-                    component:()=>import("../components/PECourse"),
+                    name:'formExam',
+                    path:'formExam',
+                    component:()=>import("../components/formExam"),
                     meta:{
-                        title:"体育课选课"
+                        title:"组卷"
                     }
                 },
                 {
-                    name:'majorCourse',
-                    path:'majorCourse',
-                    component:()=>import("../components/majorCourse"),
+                    name:'personalInfo',
+                    path:'personalInfo',
+                    component:()=>import("../components/personalInfo"),
                     meta:{
-                        title:"专业选修课"
+                        title:"个人中心"
                     }
                 },
-                {
-                    name:'courseSelected',
-                    path:'courseSelected',
-                    component:()=>import("../components/courseSelected"),
-                    meta:{
-                        title:"已选课程"
-                    }
-                }
             ]
         }
     ]
 })
 
 myRouter.beforeEach((to, from, next) =>{
-    document.querySelector('body').setAttribute('style','margin:0;padding:0;height:100%')
     next()
 })
 export default myRouter

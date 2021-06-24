@@ -2,7 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/router'
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+//自定义主题，更换了主题色
+import '../src/theme/index.css'
 import "../src/assets/Utils/commonStyle/mainStyle.css"
 import "../src/assets/Utils/commonStyle/style.css"
 import "../src/assets/Utils/commonStyle/courseDisplay.css"

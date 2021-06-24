@@ -1,8 +1,8 @@
 <template>
-  <div class="asideContainer main-backgroundColor">
+  <div class="asideContainer">
     <el-menu
         :default-active="activeIndex"
-        class="el-menu-vertical-demo main-backgroundColor"
+        class="el-menu-vertical-demo "
         @open="handleOpen"
         @close="handleClose"
         @select="select"
@@ -12,15 +12,16 @@
         >
       <!--router属性可以直接将menu-item的index映射成router的path-->
       <template v-for="index in menu" >
-        <div v-bind:style="index.id!=activeIndex?'background-color:inherit':'background-color:#ecf5ff'" :key="index.id">
-          <el-menu-item :index="index.id" :key="index.id" class="menuItem">
+        <div v-bind:class="index.id!==activeIndex?'':'main-backgroundColor'" :key="index.id">
+          <el-menu-item :index="index.id" :key="index.id" class="menuItem"
+                        v-bind:style="index.id!==activeIndex?'':'color: #ffffff'">
             <template slot="title">
-              <i :class="index.icon"></i>
-              <span slot="title">{{ index.name }}</span>
-              <div class="asideSelectedDivider" v-bind:style="activeIndex!=index.id?'background-color:inherit':'background-color:#abcdef'" ></div>
+              <!--<i :class="index.icon"></i>-->
+              <el-icon :class="index.icon"></el-icon>
+              <span slot="title" :class="activeIndex!==index.id?'inactiveWord':'activeWord'">{{ index.name }}</span>
+              <div class="asideSelectedDivider" v-bind:style="activeIndex!==index.id?'background-color:inherit':'background-color:#ffffff'" ></div>
             </template>
           </el-menu-item>
-
         </div>
 
 
@@ -81,6 +82,15 @@ export default {
   font-size: 16px;
 
 }
+
+.el-menu-item:hover{
+  background-color: lightgrey;
+}
+
+.el-menu-item:focus{
+  background-color: transparent;
+}
+
 
 
 </style>

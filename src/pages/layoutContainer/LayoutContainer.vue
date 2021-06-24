@@ -37,6 +37,10 @@ export default {
   height: 100%;
 }
 
+.el-aside{
+  height: 100%;
+}
+
 .header{
   height: 80px;
   padding: 0;
