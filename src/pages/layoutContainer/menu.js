@@ -2,8 +2,8 @@ export  const  menu=[
     {
         icon:"el-icon-search",
         name:"题库",
-        router:"/questionBank",
-        id:"questionBank",
+        router:"/subject",
+        id:"subject",
     },
     {
         icon:"el-icon-document",

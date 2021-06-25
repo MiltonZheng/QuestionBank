@@ -27,7 +27,15 @@ const myRouter = new Router({
             children:[
                 {
                     path: "",
-                    redirect:"questionBank"
+                    redirect:"subject"
+                },
+                {
+                    name:'subject',
+                    path:'subject',
+                    component:()=>import("../components/subject"),
+                    meta:{
+                        title:"选择科目"
+                    }
                 },
                 {
                     name:'questionBank',

@@ -5,6 +5,7 @@
       <img
           src="../../assets/hust.png"
           class="hust-img"
+          style="height: 100%"
       >
       <div class="input-wrapper">
         <el-input
@@ -81,6 +82,8 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 .headerUp{
   display: flex;
@@ -91,8 +94,6 @@ export default {
   height: 25%;
   display: flex;
   justify-content: flex-end;
-  background-color: #2c3e50;
-  color: white;
 }
 .headleft{
   float: left;
