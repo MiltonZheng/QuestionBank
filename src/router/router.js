@@ -34,7 +34,8 @@ const myRouter = new Router({
                     path:'subject',
                     component:()=>import("../components/subject"),
                     meta:{
-                        title:"选择科目"
+                        title:"选择科目",
+                        keepAlive:true
                     }
                 },
                 {
@@ -42,7 +43,8 @@ const myRouter = new Router({
                     path:'questionBank',
                     component:()=>import("../components/questionBank"),
                     meta:{
-                        title:"题库"
+                        title:"题库",
+                        keepAlive:true
                     }
                 },
                 {
