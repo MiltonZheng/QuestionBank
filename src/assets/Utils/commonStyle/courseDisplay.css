@@ -2,19 +2,18 @@
 
 .courseItem {
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.05);
-    margin-bottom: 16px;
+    margin: 16px;
     min-height: 184px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    min-width: 583px;
-    transition: all 0.2s;
-
+    transition: all 0.3s;
+    background-color: white;
 }
 
 .courseItemActive {
     box-shadow: 8px 6px 3px 0 rgba(0, 0, 0, 0.05);
-    margin-bottom: 16px;
+    margin: 16px;
     min-height: 184px;
     color: #abcdef;
     position: relative;
@@ -22,8 +21,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    min-width: 583px;
-    transition: all 0.2s;
+    transition: all 0.3s;
+    background-color: white;
 }
 
 .recruit-list-link {
