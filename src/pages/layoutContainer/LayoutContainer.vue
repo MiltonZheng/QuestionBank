@@ -57,7 +57,7 @@ export default {
 
 
 #contentArea{
-  margin-bottom: 80px;
+
   overflow: auto;
 }
 

@@ -67,7 +67,8 @@ export default {
         username:"黄仁卓",
         studentID:"U201816235",
         classID:"软件学院",
-        avatar:"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1877122670,861705441&fm=26&gp=0.jpg",
+        avatar:"https://th.bing.com/th/id/R0ebc3a3de377bed841b8d61ceec52cf2?rik=y15BDTvL75YX1A&riu=http%3a%2f%2fupload." +
+            "taihainet.com%2f2017%2f0506%2f1494040346648.png&ehk=p%2f%2b6y4kRZEqWs5Xz6FJiYuDcxrMn0KqQpwSsPo%2fvjRA%3d&risl=&pid=ImgRaw",
       }
     }
   }

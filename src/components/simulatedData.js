@@ -6,50 +6,40 @@ export const userInfo = {
     class: "软工1801",
     school: "华中科技大学",
     email: "13989776543@163.com",
-    avatarUrl:'https://tse4-mm.cn.bing.net/th/id/OIP-C.HzFBPAh3rV010ZB5QkvHAQHaFj?w=200&h=150&c=7&o=5&dpr=1.5&pid=1.7'
+    avatarUrl: 'https://th.bing.com/th/id/R0ebc3a3de377bed841b8d61ceec52cf2?rik=y15BDTvL75YX1A&riu=http%3a%2f%2fupload.taihai' +
+        'net.com%2f2017%2f0506%2f1494040346648.png&ehk=p%2f%2b6y4kRZEqWs5Xz6FJiYuDcxrMn0KqQpwSsPo%2fvjRA%3d&risl=&pid=ImgRaw'
 }
-export const statisticsBySubject=[
+export const statisticsBySubject = [
     {
-        name:"语文",
-        value:9,
-
+        name: "语文",
+        value: 9,
     },
     {
-        name:"数学",
-        value:17,
-
+        name: "数学",
+        value: 17,
     }, {
-        name:"物理",
-        value:6,
-
+        name: "物理",
+        value: 6,
     }, {
-        name:"英语",
-        value:9,
-
+        name: "英语",
+        value: 9,
     }, {
-        name:"化学",
-        value:12,
-
+        name: "化学",
+        value: 12,
     }, {
-        name:"政治",
-        value:3,
-
+        name: "政治",
+        value: 3,
     }, {
-        name:"地理",
-        value:5,
-
+        name: "地理",
+        value: 5,
     },
 ]
 
 
-
-export const statisticsByDate={
-    dates:['6月12号','6月13号','6月14号','6月15号','6月16号','6月17号','6月18号'],
-    textNums:[23,14,16,38,26,22,25]
+export const statisticsByDate = {
+    dates: ['6月12号', '6月13号', '6月14号', '6月15号', '6月16号', '6月17号', '6月18号'],
+    textNums: [23, 14, 16, 38, 26, 22, 25]
 }
-
-
-
 
 
 export const SimulatedData =
