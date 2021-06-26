@@ -1,8 +1,28 @@
 <template>
   <div class="infoContainer">
 
-    <el-dialog title="修改信息" :visible.sync="dialogFormVisible" >
+    <el-dialog title="修改信息" :visible.sync="dialogFormVisible">
       <el-form :model="form">
+        <el-form-item label="头像" :label-width="formLabelWidth">
+
+          <el-upload
+              ref="uploadImage"
+              action="#"
+              :multiple="false"
+              :file-list="fileList"
+              list-type="picture-card"
+
+              :before-upload="beforeUpload"
+              :on-exceed="addressExceed"
+              :on-preview="onPreview"
+              :on-change="changeUpload"
+
+              :auto-upload="false">
+            <i slot="default" class="el-icon-plus"></i>
+          </el-upload>
+
+
+        </el-form-item>
         <el-form-item label="姓名" :label-width="formLabelWidth">
           <el-input v-model="form.name" autocomplete="off" :placeholder="userInfo.name"></el-input>
         </el-form-item>
@@ -16,15 +36,15 @@
           <el-input v-model="form.school" autocomplete="off" :placeholder="userInfo.school"></el-input>
         </el-form-item>
         <el-form-item label="性别" :label-width="formLabelWidth" style="text-align: left">
-          <template >
+          <template>
             <el-radio v-model="form.sex" label="男" size="medium">男</el-radio>
             <el-radio v-model="form.sex" label="女" size="medium">女</el-radio>
           </template>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+        <el-button @click="editCancel">取 消</el-button>
+        <el-button type="primary" @click="editSubmit">确 定</el-button>
       </div>
     </el-dialog>
 
@@ -38,7 +58,8 @@
             <el-row type="flex" class="el-row-personal-info">
               <el-col :span="6">
                 <div>
-                  <el-avatar :size="100" fit="fill" :src="userInfo.avatarUrl" style="border: 2px solid #eee"></el-avatar>
+                  <el-avatar :size="100" fit="fill" :src="userInfo.avatarUrl"
+                             style="border: 2px solid #eee"></el-avatar>
                 </div>
               </el-col>
               <el-col :span="12" style="text-align: left">
@@ -62,8 +83,8 @@
                 </div>
 
               </el-col>
-              <el-col :span="4" >
-                <el-image :src="editImage"  @click="setDialog"></el-image>
+              <el-col :span="4">
+                <el-image :src="editImage" @click="setDialog" class="editImage"></el-image>
               </el-col>
 
             </el-row>
@@ -76,7 +97,6 @@
       </el-col>
       <el-col :span="12">
         <div class="infoBlockContainer ">
-
 
 
         </div>
@@ -109,19 +129,22 @@ import editImage from "@/assets/editinfo.png"
 // import lineChart from 'cps/echarts/lineChart' // 用户投资类型 折线图
 export default {
   name: "personalInfo",
-  components: {BarChart,lineChart},
+  imageUrl: userInfo.avatarUrl,
+  components: {BarChart, lineChart},
   data() {
     return {
-      editImage:editImage,
+      editImage: editImage,
       userInfo: userInfo,
-
+      dialogVisible: false,
+      disabled: false,
+      fileList: [{name: 'avatar.jpeg', url: userInfo.avatarUrl}],
       dialogTableVisible: false,
       dialogFormVisible: false,
       form: {
         name: '',
-        studentID:'',
-        class:'',
-        school:'',
+        studentID: '',
+        class: '',
+        school: '',
         sex: userInfo.sex,
         date1: '',
         date2: '',
@@ -135,12 +158,89 @@ export default {
     }
 
   },
-  methods:{
-    setDialog(){
-      this.dialogFormVisible=true
+  methods: {
+    setDialog() {
+      this.dialogFormVisible = true
+    },
+    editCancel() {
+      /****清空*****/
+      this.form = {
+        name: '',
+        studentID: '',
+        class: '',
+        school: '',
+        sex: userInfo.sex,
+        date1: '',
+        date2: '',
+        delivery: false,
+        type: [],
+        resource: '',
+        desc: ''
+      }
+      this.fileList=[{name: 'avatar.jpeg', url: userInfo.avatarUrl}],
+      this.dialogFormVisible = false
+    },
+    editSubmit() {
+
+      /**********发送网络请求***********/
+      this.$refs.uploadImage.submit()/**提交图像*/
+
+
+      /******请求结束，异步任务结束*****/
+      /****清空*****/
+      this.form = {
+        name: '',
+        studentID: '',
+        class: '',
+        school: '',
+        sex: userInfo.sex,
+      }
+      /**********close window***********/
+      this.dialogFormVisible = false
+    }, handleAvatarSuccess(res, file) {
+      this.imageUrl = URL.createObjectURL(file.raw);
+    },
+
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === 'image/jpeg';
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!isJPG) {
+        this.$message.error('上传头像图片只能是 JPG 格式!');
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!');
+      }
+      return isJPG && isLt2M;
+    },
+    addressExceed(files,fileList){
+      this.fileList.pop()
+      this.fileList.push(files[0])
+      console.log(files)
+      console.log(fileList)
+    },
+    changeUpload(file)
+    {
+
+      this.fileList.pop()
+      this.fileList.push(file)
+
+
+    },
+    onPreview(file)
+    {
+      console.log(file)
+    },
+    beforeUpload(file)
+    {
+      console.log(file)
     }
+
+
+
+
   },
-  comments:{
+  comments: {
     barChart
 
   }
@@ -161,6 +261,14 @@ export default {
 .el-row {
   margin-bottom: 20px;
 }
+
+.editImage {
+  transition: width 2s;
+}
+
+/*.editImage:hover{*/
+/*  box-shadow: 20px 2px 2px  #00ff00;*/
+/*}*/
 
 .infoBlockContainer {
   height: 200px;
