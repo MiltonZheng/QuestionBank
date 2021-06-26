@@ -111,7 +111,7 @@
 </template>
 
 <script>
-import {ManyCourses} from "@/components/ManyCourses";
+import {SimulatedData} from "@/components/simulatedData";
 
 const localOptions = ['东九', '西十二'];
 const courseDayOptions = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
@@ -134,9 +134,9 @@ name: "PECourse",
 
   created() {
     var currentCourse = [];
-    currentCourse = ManyCourses.slice(0, 10)
+    currentCourse = SimulatedData.slice(0, 10)
     this.courses = currentCourse
-    this.courseNum = ManyCourses.length
+    this.courseNum = SimulatedData.length
   },
   methods: {
     handleMouseOver: function (event) {
@@ -168,7 +168,7 @@ name: "PECourse",
 
     },
     handleCurrentChange(val) {
-      this.courses = ManyCourses.slice((val - 1) * 10, val * 10);
+      this.courses = SimulatedData.slice((val - 1) * 10, val * 10);
     },
     handleCheckedLocationsChange(){
       this.chooseType.location=this.checkedCities;

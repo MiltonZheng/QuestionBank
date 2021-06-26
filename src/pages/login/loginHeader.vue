@@ -7,13 +7,13 @@
     </div>
     <div class="logheader-right">
       <div class="hidden-xs-only" style="margin: auto">
-        <span class="infoItem">热点问题</span>
+        <span class="infoBlockContainer">热点问题</span>
         <el-divider direction="vertical"></el-divider>
-        <span class="infoItem">使用帮助</span>
+        <span class="infoBlockContainer">使用帮助</span>
         <el-divider direction="vertical"></el-divider>
-        <span class="infoItem">在线客服</span>
+        <span class="infoBlockContainer">在线客服</span>
         <el-divider direction="vertical"></el-divider>
-        <span class="infoItem">使用建议</span>
+        <span class="infoBlockContainer">使用建议</span>
       </div>
 
       <!--下拉菜单，响应式布局-->

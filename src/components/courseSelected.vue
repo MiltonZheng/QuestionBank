@@ -54,13 +54,13 @@
 </template>
 
 <script>
-import {ManyCourses} from "@/components/ManyCourses";
+import {SimulatedData} from "@/components/simulatedData";
 
 export default {
   name: "courseSelected",
   data(){
     return {
-      courses:ManyCourses
+      courses:SimulatedData
     }
   },
   methods:{

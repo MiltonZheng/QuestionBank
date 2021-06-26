@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import {ManyCourses} from "@/components/ManyCourses";
+import {SimulatedData} from "@/components/simulatedData";
 
 export default {
 name: "majorCourse",
@@ -72,9 +72,9 @@ name: "majorCourse",
 
   created() {
     var currentCourse = [];
-    currentCourse = ManyCourses.slice(0, 10)
+    currentCourse = SimulatedData.slice(0, 10)
     this.courses = currentCourse
-    this.courseNum = ManyCourses.length
+    this.courseNum = SimulatedData.length
   },
   methods: {
     handleMouseOver: function (event) {
@@ -106,7 +106,7 @@ name: "majorCourse",
 
     },
     handleCurrentChange(val) {
-      this.courses = ManyCourses.slice((val - 1) * 10, val * 10);
+      this.courses = SimulatedData.slice((val - 1) * 10, val * 10);
     }
 
   },

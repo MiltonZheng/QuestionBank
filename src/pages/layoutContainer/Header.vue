@@ -36,11 +36,11 @@
   </div>
   <div class="headerDown">
     <div>
-      <span class="infoItem">{{user.username}}</span>
+      <span class="infoBlockContainer">{{user.username}}</span>
       <el-divider direction="vertical"></el-divider>
-      <span class="infoItem">{{user.studentID}}</span>
+      <span class="infoBlockContainer">{{user.studentID}}</span>
       <el-divider direction="vertical"></el-divider>
-      <span class="infoItem">{{user.classID}}</span>
+      <span class="infoBlockContainer">{{user.classID}}</span>
     </div>
 
 
@@ -136,7 +136,7 @@ export default {
   justify-content: end;
 }
 
-.infoItem{
+.infoBlockContainer{
 width: max-content;
   margin-right: 10px;
   font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;

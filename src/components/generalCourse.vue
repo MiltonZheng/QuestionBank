@@ -151,7 +151,7 @@ const localOptions = ['东九', '西十二'];
 const courseDayOptions = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
 const departmentsOptions = ['马克思学院', '体育学院', '计算机学院']
 const classtypesOptions = ['沟通与管理', '科技与环境', '历史与文化', '社会与经济', '文学与艺术']
-import {ManyCourses} from "@/components/ManyCourses";
+import {SimulatedData} from "@/components/simulatedData";
 
 export default {
   name: "generalCourse",
@@ -179,9 +179,9 @@ export default {
 
   created() {
     var currentCourse = [];
-    currentCourse = ManyCourses.slice(0, 10)
+    currentCourse = SimulatedData.slice(0, 10)
     this.courses = currentCourse
-    this.courseNum = ManyCourses.length
+    this.courseNum = SimulatedData.length
   },
   methods: {
     handleMouseOver: function (event) {
@@ -213,7 +213,7 @@ export default {
 
     },
     handleCurrentChange(val) {
-      this.courses = ManyCourses.slice((val - 1) * 10, val * 10);
+      this.courses = SimulatedData.slice((val - 1) * 10, val * 10);
     },
     handleCheckedCitiesChange() {
       this.chooseType.location=this.checkedCities;
