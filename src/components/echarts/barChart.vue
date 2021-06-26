@@ -38,7 +38,7 @@ export default {
       var option;
 
       option = {
-        backgroundColor: '#Fff',
+        backgroundColor: '#ffffff',
 
         title: {
           text: '习题统计',

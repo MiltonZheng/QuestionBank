@@ -2,7 +2,7 @@
   <div class="infoContainer">
     <el-row :gutter="30">
       <el-col :span="12">
-        <div class="infoBlockContainer main-backgroundColorLevel4">
+        <div class="infoBlockContainer ">
 
           <div style="margin-top: 20px">
 
@@ -42,7 +42,7 @@
         </div>
       </el-col>
       <el-col :span="12">
-        <div class="infoBlockContainer main-backgroundColorLevel4">
+        <div class="infoBlockContainer ">
 
           <bar-chart type="barChart"></bar-chart>
 
@@ -51,11 +51,11 @@
     </el-row>
     <el-row :gutter="30">
       <el-col :span="12">
-        <div class="infoBlockContainer main-backgroundColorLevel4">
+        <div class="infoBlockContainer ">
         </div>
       </el-col>
       <el-col :span="12">
-        <div class="infoBlockContainer main-backgroundColorLevel4">
+        <div class="infoBlockContainer ">
         </div>
       </el-col>
     </el-row>
@@ -106,6 +106,7 @@ export default {
   height: 200px;
   min-width: 330px;
   padding: 10px 10px 10px 10px;
+  background-color: #ffffff;
 
   border-radius: 5%;
 }
