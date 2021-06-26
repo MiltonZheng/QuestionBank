@@ -1,11 +1,12 @@
 <template>
   <div>
     <div>
-      <el-breadcrumb separator=">">
+      <el-breadcrumb separator="/">
         <el-breadcrumb-item >题库</el-breadcrumb-item>
         <el-breadcrumb-item :to="{ path: '/mainPage/subject' }">选择科目</el-breadcrumb-item>
         <el-breadcrumb-item><a href="#">题库</a></el-breadcrumb-item>
-      </el-breadcrumb></div>
+      </el-breadcrumb>
+    </div>
     <el-main>
       <el-form rel="form" model="form" :inline="true">
         <el-form-item label="习题章节">
@@ -45,17 +46,19 @@
     <div v-if="result.GET">
       <template v-for="question in questions.questionList" >
         <div :key="question.id" @click="showQuestion(question.id)">
-          <el-col  :sm="11" :xs="24" class="questionArea" >
-            <p class="questionInfo">
-              <b>题目编号：</b>{{question.id}}
-              <el-divider direction="vertical"></el-divider>
-              <b>所属章节：</b>{{question.chapterId}} {{question.chapterName}}
-              <el-divider direction="vertical"></el-divider>
-              <b>题目类型：</b>{{question.type!==1?question.type!==2?'简答题':'填空题':'选择题'}}
-            </p>
-            <p class="questionBody">
-              {{question.body}}
-            </p>
+          <el-col  :sm="12" :xs="24">
+            <div class="questionArea">
+              <p class="questionInfo">
+                <b>题目编号：</b>{{question.id}}
+                <el-divider direction="vertical"></el-divider>
+                <b>所属章节：</b>{{question.chapterId}} {{question.chapterName}}
+                <el-divider direction="vertical"></el-divider>
+                <b>题目类型：</b>{{question.type!==1?question.type!==2?'简答题':'填空题':'选择题'}}
+              </p>
+              <p class="questionBody">
+                {{question.body}}
+              </p>
+            </div>
           </el-col></div>
       </template>
     </div>
@@ -111,9 +114,8 @@ export default {
 </script>
 
 <style scoped>
-
   .questionArea{
-    margin: 10px 10px;
+    margin: 10px;
     padding: 5px;
     border-radius: 4px;
     background-color: white;

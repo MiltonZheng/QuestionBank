@@ -17,7 +17,7 @@
       </el-row>
       <el-row>
         <div v-for="Item in subjects" :key="Item.courseId">
-          <el-col :span="12">
+          <el-col :sm="12" :xs="24" >
             <div :key="Item.courseId" class="courseItem selectedCourseItem"
                  @mouseover="handleMouseOver($event)"
                  @mouseleave="handleMouseLeave($event)"
@@ -86,4 +86,6 @@ export default {
 .searchSubject{
   float: right;
 }
+
+
 </style>
