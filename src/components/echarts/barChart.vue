@@ -29,6 +29,7 @@ export default {
   },
   mounted() {
     this.loadChart();
+
   },
   methods: {
     loadChart() {
@@ -65,8 +66,8 @@ export default {
           {
             name: '科目',
             type: 'pie',
-            radius: '55%',
-            center: ['50%', '50%'],
+            radius: '75%',
+            center: ['50%', '60%'],
             data:
               // {value: 335, name: '直接访问'},
               // {value: 310, name: '邮件营销'},
@@ -101,6 +102,10 @@ export default {
         ]
       };
       myChart.setOption(option)
+      window.addEventListener("resize", () => {
+        myChart.resize()
+      })
+
     },
   },
 }
