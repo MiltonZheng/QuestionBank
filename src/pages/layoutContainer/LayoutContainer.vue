@@ -6,7 +6,7 @@
       </el-header>
       <el-container>
 
-        <el-aside style="height: 100%;width: 250px">
+        <el-aside style="height: 100%;width: 250px" class="aside">
           <Aside/>
         </el-aside>
         <el-main>
@@ -30,6 +30,7 @@ export default {
 
 <style scoped>
 .layoutContainer{
+  background-color: #f0f2f5;
   height: 100%;
   width: 100%;
 }
@@ -42,9 +43,13 @@ export default {
 }
 
 .header{
+  background-color: white;
   height: 80px;
   padding: 0;
-  border-bottom: 2px solid #ffffff;
+}
+
+.aside{
+
 }
 
 .el-main{
