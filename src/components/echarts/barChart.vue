@@ -1,5 +1,5 @@
 <template>
-  <div id="barChart" style="width: auto;height: 180px"></div>
+  <div id="barChart" style="width: auto;height: 280px"></div>
 </template>
 
 <script>
@@ -76,18 +76,18 @@ export default {
             statisticsBySubject.sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {
-              color: 'rgba(255, 255, 255, 0.3)'
+              color: 'rgba(44,62,80,0.3)'
             },
             labelLine: {
               lineStyle: {
-                color: 'rgba(255, 255, 255, 0.3)'
+                color: 'rgba(44,62,80,0.3)'
               },
-              smooth: 0.2,
+              smooth: 0.6,
               length: 10,
-              length2: 20
+              length2: 40
             },
             itemStyle: {
-              color: '#c23531',
+              color: '#c23531',/***********配合主题颜色，需做更改***************/
               shadowBlur: 200,
               shadowColor: 'rgba(0, 0, 0, 0.5)'
             },

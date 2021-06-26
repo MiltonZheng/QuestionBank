@@ -9,7 +9,7 @@
             <el-row type="flex" class="el-row-personal-info">
               <el-col :span="6">
                 <div>
-                  <el-avatar :size="100" fit="fill" :src="userInfo.avatarUrl"></el-avatar>
+                  <el-avatar :size="100" fit="fill" :src="userInfo.avatarUrl" style="border: 2px solid #eee"></el-avatar>
                 </div>
               </el-col>
               <el-col :span="16" style="text-align: left">
@@ -44,18 +44,20 @@
       <el-col :span="12">
         <div class="infoBlockContainer ">
 
-          <bar-chart type="barChart"></bar-chart>
+
 
         </div>
       </el-col>
     </el-row>
     <el-row :gutter="30">
       <el-col :span="12">
-        <div class="infoBlockContainer ">
+        <div class="infoBlockContainer " style="height: 300px">
+          <bar-chart type="barChart"></bar-chart>
         </div>
       </el-col>
       <el-col :span="12">
-        <div class="infoBlockContainer ">
+        <div class="infoBlockContainer " style="height: 300px">
+          <line-chart typeof="lineChart"></line-chart>
         </div>
       </el-col>
     </el-row>
@@ -67,12 +69,13 @@ import {userInfo} from "@/components/simulatedData";
 
 import barChart from "@/components/echarts/barChart";
 import BarChart from "@/components/echarts/barChart"; // 用户投资类型 柱状图
+import lineChart from "@/components/echarts/lineChart";
 // import pieChart from 'cps/echarts/pieChart' // 用户投资类型 饼状图
 // import radarChart from 'cps/echarts/radarChart' // 用户投资类型 雷达图
 // import lineChart from 'cps/echarts/lineChart' // 用户投资类型 折线图
 export default {
   name: "personalInfo",
-  components: {BarChart},
+  components: {BarChart,lineChart},
   data() {
     return {
 
@@ -107,6 +110,7 @@ export default {
   min-width: 330px;
   padding: 10px 10px 10px 10px;
   background-color: #ffffff;
+
 
   border-radius: 5%;
 }

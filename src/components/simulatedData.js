@@ -43,6 +43,13 @@ export const statisticsBySubject=[
 
 
 
+export const statisticsByDate={
+    dates:['6月12号','6月13号','6月14号','6月15号','6月16号','6月17号','6月18号'],
+    textNums:[23,14,16,38,26,22,25]
+}
+
+
+
 
 
 export const SimulatedData =
