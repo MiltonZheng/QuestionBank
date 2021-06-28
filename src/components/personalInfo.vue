@@ -49,8 +49,8 @@
     </el-dialog>
 
 
-    <el-row :gutter="30">
-      <el-col :span="12">
+    <el-row :gutter="30" class="firstRow">
+      <el-col :md="12" :sm="24">
         <div class="infoBlockContainer ">
 
           <div style="margin-top: 20px">
@@ -95,21 +95,22 @@
 
         </div>
       </el-col>
-      <el-col :span="12">
+      <el-col :md="12" :sm="24">
         <div class="infoBlockContainer ">
 
 
         </div>
       </el-col>
     </el-row>
-    <el-row :gutter="30">
-      <el-col :span="12">
-        <div class="infoBlockContainer " style="height: 300px">
+
+    <el-row :gutter="30" class="secondRow">
+      <el-col :md="12" :sm="24">
+        <div class="infoBlockContainer " >
           <bar-chart type="barChart"></bar-chart>
         </div>
       </el-col>
-      <el-col :span="12">
-        <div class="infoBlockContainer " style="height: 300px">
+      <el-col :md="12" :sm="24">
+        <div class="infoBlockContainer ">
           <line-chart typeof="lineChart"></line-chart>
         </div>
       </el-col>
@@ -249,7 +250,7 @@ export default {
 
 <style scoped>
 .infoContainer {
-
+  height: 100%;
 
 }
 
@@ -270,14 +271,26 @@ export default {
 /*  box-shadow: 20px 2px 2px  #00ff00;*/
 /*}*/
 
+.el-col{
+  height: 100%;
+  margin: 10px 0;
+}
+
 .infoBlockContainer {
-  height: 200px;
+  height: 100%;
   min-width: 330px;
   padding: 10px 10px 10px 10px;
   background-color: #ffffff;
   box-shadow: 12px 12px 5px #eee;
-
-
   border-radius: 5%;
 }
+
+.firstRow{
+  height: 40%;
+}
+
+.secondRow{
+  height: 60%;
+}
+
 </style>
