@@ -5,7 +5,7 @@
         <Header/>
       </el-header>
 
-      <el-container>
+      <el-container id="withoutHeader">
         <el-aside style="width: 250px" class="aside">
           <Aside/>
         </el-aside>
@@ -30,12 +30,14 @@ export default {
     let fullHeight = document.documentElement.clientHeight;
     console.log("页面高度"+fullHeight);
     document.getElementById("mainWindow").style.height=fullHeight-1+"px"
+    document.getElementById("contentArea").style.height=fullHeight-81+"px"
     window.onresize = () => {
       return (() => {
         let fullHeight = document.documentElement.clientHeight;
         console.log("页面高度"+fullHeight);
         let obj=document.getElementById("mainWindow")
         obj.style.height=fullHeight-1+"px"
+        document.getElementById("contentArea").style.height=fullHeight-81+"px"
       })()
     };
   },
@@ -47,17 +49,12 @@ export default {
   background-color: #f0f2f5;
   width: 100%;
 }
-.el-container{
-  height: 100%;
-}
 
 #mainWindow{
   overflow: hidden;
 }
 
-
 #contentArea{
-
   overflow: auto;
 }
 
@@ -76,7 +73,5 @@ export default {
   background-color: white;
 }
 
-.el-main{
-}
 
 </style>

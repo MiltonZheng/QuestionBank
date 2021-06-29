@@ -198,7 +198,8 @@ export default {
       }
       /**********close window***********/
       this.dialogFormVisible = false
-    }, handleAvatarSuccess(res, file) {
+    },
+    handleAvatarSuccess(res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
     },
 
@@ -282,7 +283,7 @@ export default {
   padding: 10px 10px 10px 10px;
   background-color: #ffffff;
   box-shadow: 12px 12px 5px #eee;
-  border-radius: 5%;
+  border-radius: 10px;
 }
 
 .firstRow{

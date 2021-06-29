@@ -5,7 +5,7 @@
         <loginHeader/>
       </el-header>
 
-      <el-main class="logMain">
+      <el-main class="logMain" id="logMain">
         <div class="loginContainer">
           <!--  <vue-particles color="#fff" :particlesNumber='60' :moveSpeed='1.5' :lineOpacity='0.5' class="bg"></vue-particles>-->
           <div class="loginForm">
@@ -88,18 +88,26 @@ export default {
     for (let i = 0; i < dom2.length; ++i) {
       dom2[i].setAttribute("style", "margin-left:0px");
     }
+
+    // <!--把window.onresize事件挂在到mounted函数上-->
+    let fullHeight = document.documentElement.clientHeight;
+    console.log("页面高度"+fullHeight);
+    document.getElementById("logMain").style.height=fullHeight-51+"px"
+    window.onresize = () => {
+      return (() => {
+        let fullHeight = document.documentElement.clientHeight;
+        console.log("页面高度"+fullHeight);
+        let obj=document.getElementById("logMain")
+        obj.style.height=fullHeight-51+"px"
+      })()
+    };
   },
   methods: {
     submitForm(formName) {
       let that=this
       this.$refs[formName].validate((valid) => {
         if (valid) {
-
-
-
           login(that, this.ruleForm)
-
-
         } else {
           return false;
         }
@@ -108,7 +116,7 @@ export default {
     resetForm(formName) {
       this.$refs[formName].resetFields()
     },
-  }
+  },
 }
 </script>
 

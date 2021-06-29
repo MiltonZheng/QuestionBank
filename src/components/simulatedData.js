@@ -9,6 +9,7 @@ export const userInfo = {
     avatarUrl: 'https://th.bing.com/th/id/R0ebc3a3de377bed841b8d61ceec52cf2?rik=y15BDTvL75YX1A&riu=http%3a%2f%2fupload.taihai' +
         'net.com%2f2017%2f0506%2f1494040346648.png&ehk=p%2f%2b6y4kRZEqWs5Xz6FJiYuDcxrMn0KqQpwSsPo%2fvjRA%3d&risl=&pid=ImgRaw'
 }
+
 export const statisticsBySubject = [
     {
         name: "语文",
@@ -43,7 +44,8 @@ export const statisticsByDate = {
 
 
 export const SimulatedData =
-    [{
+    [
+        {
         courseId: 12343,
         courseName: '逻辑与幽默',
         courseType: '沟通与管理',
@@ -58,7 +60,7 @@ export const SimulatedData =
         courseLocation: "东九",
     },
         {
-            courseId: 12343,
+            courseId: 12349,
             courseName: '营养与健康',
             courseType: '沟通与管理',
             courseHours: 32,
@@ -71,7 +73,7 @@ export const SimulatedData =
             courseTime: "周三9-12",
             courseLocation: "东久",
         }, {
-        courseId: 12343,
+        courseId: 12334,
         courseName: '食品安全与卫生',
         courseType: '沟通与管理',
         courseHours: 32,
@@ -83,8 +85,9 @@ export const SimulatedData =
         courseWeek: "4-11",
         courseTime: "周三9-12",
         courseLocation: "东久",
-    }, {
-        courseId: 12343,
+    },
+        {
+        courseId: 123476,
         courseName: '深度中国',
         courseType: '沟通与管理',
         courseHours: 32,
@@ -98,7 +101,7 @@ export const SimulatedData =
         courseLocation: "东久",
     },
         {
-            courseId: 12343,
+            courseId: 12344,
             courseName: '民国历史人物',
             courseType: '沟通与管理',
             courseHours: 32,
@@ -112,7 +115,7 @@ export const SimulatedData =
             courseLocation: "东久",
         },
         {
-            courseId: 12343,
+            courseId: 12345,
             courseName: '晚清历史人物研究',
             courseType: '沟通与管理',
             courseHours: 32,
@@ -126,7 +129,7 @@ export const SimulatedData =
             courseLocation: "东久",
         },
         {
-            courseId: 12343,
+            courseId: 12346,
             courseName: '逻辑与幽默',
             courseType: '沟通与管理',
             courseHours: 32,
@@ -283,7 +286,7 @@ export const SimulatedData =
             courseLocation: "东久",
         },
         {
-            courseId: 12343,
+            courseId: 12347,
             courseName: '逻辑与幽默',
             courseType: '沟通与管理',
             courseHours: 32,
@@ -516,4 +519,239 @@ export const SimulatedData =
             courseLocation: "东久",
         }]
 
+export const questions= {
+    value: '',
+    curr: -1,
+    questionList:[
+        {
+            id: 1,
+            difficulty:'易',
+            type: 'pro_choice',
+            body: 'this is the body of question type 1 this is the body of question type 1' +
+                'this is the body of question type 1 this is the body of question type 1',
+            A: 'this is answer A',
+            B: 'this is answer B',
+            C: 'this is answer C',
+            D: 'this is answer D',
+            answer: ['A'],
+        },
+        {
+            id: 2,
+            difficulty:'易',
+            type: 'pro_completion',
+            body: 'this is the body of question type 2, _______, _________',
+            answer: ['answer1', 'answer2'],
+        },
+        {
+            id: 3,
+            difficulty:'难',
+            type: 'pro_answer',
+            body: 'this is the body of question type 3',
+            answer: ['this is the answer of question 3, this is the answer of question 3.'],
+        },
+        {
+            id: 4,
+            difficulty:'易',
+            type: 'pro_choice',
+            body: 'this is the body of question type 1 this is the body of question type 1' +
+                'this is the body of question type 1 this is the body of question type 1',
+            A: 'this is answer A',
+            B: 'this is answer B',
+            C: 'this is answer C',
+            D: 'this is answer D',
+            answer: ['A'],
+        },
+        {
+            id: 5,
+            difficulty:'难',
+            type: 'pro_completion',
+            body: 'this is the body of question type 2, _______, _________',
+            answer: ['answer1', 'answer2'],
+        },
+        {
+            id: 6,
+            difficulty:'难',
+            type: 'pro_answer',
+            body: 'this is the body of question type 3',
+            answer: ['this is the answer of question 3, this is the answer of question 3.'],
+        },
+        {
+            id: 7,
+            difficulty:'易',
+            type: 'pro_choice',
+            body: 'this is the body of question type 1 this is the body of question type 1' +
+                'this is the body of question type 1 this is the body of question type 1',
+            A: 'this is answer A',
+            B: 'this is answer B',
+            C: 'this is answer C',
+            D: 'this is answer D',
+            answer: ['A'],
+        },
+        {
+            id: 8,
+            difficulty:'中',
+            type: 'pro_completion',
+            body: 'this is the body of question type 2, _______, _________',
+            answer: ['answer1', 'answer2'],
+        },
+        {
+            id: 9,
+            difficulty:'难',
+            type: 'pro_answer',
+            body: 'this is the body of question type 3',
+            answer: ['this is the answer of question 3, this is the answer of question 3.'],
+        },
+        {
+            id: 10,
+            difficulty:'易',
+            type: 'pro_choice',
+            body: 'this is the body of question type 1 this is the body of question type 1' +
+                'this is the body of question type 1 this is the body of question type 1',
+            A: 'this is answer A',
+            B: 'this is answer B',
+            C: 'this is answer C',
+            D: 'this is answer D',
+            answer: ['A'],
+        },
+        {
+            id: 11,
+            difficulty:'易',
+            type: 'pro_completion',
+            body: 'this is the body of question type 2, _______, _________',
+            answer: ['answer1', 'answer2'],
+        },
+        {
+            id: 12,
+            difficulty:'难',
+            type: 'pro_answer',
+            body: 'this is the body of question type 3',
+            answer: ['this is the answer of question 3, this is the answer of question 3.'],
+        },
+        {
+            id: 13,
+            difficulty:'中',
+            type: 'pro_choice',
+            body: 'this is the body of question type 1 this is the body of question type 1' +
+                'this is the body of question type 1 this is the body of question type 1',
+            A: 'this is answer A',
+            B: 'this is answer B',
+            C: 'this is answer C',
+            D: 'this is answer D',
+            answer: ['A'],
+        },
+        {
+            id: 14,
+            difficulty:'易',
+            type: 'pro_completion',
+            body: 'this is the body of question type 2, _______, _________',
+            answer: ['answer1', 'answer2'],
+        },
+        {
+            id: 15,
+            difficulty:'易',
+            type: 'pro_answer',
+            body: 'this is the body of question type 3',
+            answer: ['this is the answer of question 3, this is the answer of question 3.'],
+        },
+        {
+            id: 16,
+            difficulty:'中',
+            type: 'pro_choice',
+            body: 'this is the body of question type 1 this is the body of question type 1' +
+                'this is the body of question type 1 this is the body of question type 1',
+            A: 'this is answer A',
+            B: 'this is answer B',
+            C: 'this is answer C',
+            D: 'this is answer D',
+            answer: ['A'],
+        },
+        {
+            id: 17,
+            difficulty:'难',
+            type: 'pro_completion',
+            body: 'this is the body of question type 2, _______, _________',
+            answer: ['answer1', 'answer2'],
+        },
+        {
+            id: 18,
+            difficulty:'易',
+            type: 'pro_answer',
+            body: 'this is the body of question type 3',
+            answer: ['this is the answer of question 3, this is the answer of question 3.'],
+        },
+        {
+            id: 19,
+            difficulty:'易',
+            type: 'pro_choice',
+            body: 'this is the body of question type 1 this is the body of question type 1' +
+                'this is the body of question type 1 this is the body of question type 1',
+            A: 'this is answer A',
+            B: 'this is answer B',
+            C: 'this is answer C',
+            D: 'this is answer D',
+            answer: ['A'],
+        },
+        {
+            id: 20,
+            difficulty:'中',
+            type: 'pro_completion',
+            body: 'this is the body of question type 2, _______, _________',
+            answer: ['answer1', 'answer2'],
+        },
+        {
+            id: 21,
+            difficulty:'难',
+            type: 'pro_answer',
+            body: 'this is the body of question type 3',
+            answer: ['this is the answer of question 3, this is the answer of question 3.'],
+        },
+        {
+            id: 22,
+            difficulty:'中',
+            type: 'pro_choice',
+            body: 'this is the body of question type 1 this is the body of question type 1' +
+                'this is the body of question type 1 this is the body of question type 1',
+            A: 'this is answer A',
+            B: 'this is answer B',
+            C: 'this is answer C',
+            D: 'this is answer D',
+            answer: ['A'],
+        },
+        {
+            id: 23,
+            difficulty:'难',
+            type: 'pro_completion',
+            body: 'this is the body of question type 2, _______, _________',
+            answer: ['answer1', 'answer2'],
+        },
+        {
+            id: 24,
+            difficulty:'易',
+            type: 'pro_answer',
+            body: 'this is the body of question type 3',
+            answer: ['this is the answer of question 3, this is the answer of question 3.'],
+        },
+    ],
+}
+
+export const difficulty= ["易","中","难"]
+
+export const questionType=[
+        {
+            value: '',
+            label: '不限'
+        },
+        {
+            value: 'pro_choice',
+            label: '选择题'
+        },
+        {
+            value: 'pro_completion',
+            label: '填空题'
+        },
+        {
+            value: 'pro_answer',
+            label: '简答题'
+        },
+    ]
 

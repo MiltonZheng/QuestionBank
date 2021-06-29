@@ -6,20 +6,26 @@
     min-height: 184px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     transition: all 0.3s;
     background-color: white;
+}
+
+.courseItem:hover{
+    cursor: pointer;
 }
 
 .courseItemActive {
     box-shadow: 8px 6px 3px 0 rgba(0, 0, 0, 0.05);
     margin: 16px;
     min-height: 184px;
-    color: #abcdef;
+    color: #ffaea2;
     position: relative;
     bottom: 6px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     transition: all 0.3s;
     background-color: white;

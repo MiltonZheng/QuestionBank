@@ -48,6 +48,14 @@ const myRouter = new Router({
                     }
                 },
                 {
+                    name:'addQuestion',
+                    path:'addQuestion',
+                    component:()=>import("../components/addQuestion"),
+                    meta:{
+                        title:"添加题目"
+                    }
+                },
+                {
                     name:'checkQuestion',
                     path:'checkQuestion',
                     component:()=>import("../components/checkQuestion"),

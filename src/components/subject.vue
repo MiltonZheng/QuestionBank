@@ -17,7 +17,7 @@
       </el-row>
       <el-row>
         <div v-for="Item in subjects" :key="Item.courseId">
-          <el-col :sm="12" :xs="24" >
+          <el-col :md="12" :sm="24" >
             <div :key="Item.courseId" class="courseItem selectedCourseItem"
                  @mouseover="handleMouseOver($event)"
                  @mouseleave="handleMouseLeave($event)"
@@ -40,12 +40,19 @@
                   教师：{{ Item.courseCollege }}-{{ Item.teacherName }}-{{ Item.teacherTitle }};
                 </p>
               </div>
-
             </div>
           </el-col>
-
         </div>
       </el-row>
+
+      <el-pagination
+          @current-change="handleCurrentChange"
+          background
+          layout="prev, pager, next"
+          :total="subjectNum"
+          :page-size="10"
+          :current-page.sync="currPage">
+      </el-pagination>
     </el-main>
   </div>
 </template>
@@ -57,8 +64,10 @@ export default {
   name: "subject",
   data(){
     return{
-      subjects: SimulatedData,
+      subjectNum: SimulatedData.length,
+      subjects: SimulatedData.slice(0,10),
       subject: '',
+      currPage: 0
     }
   },
   methods:{
@@ -73,7 +82,12 @@ export default {
     jumpToQuestion(id){
       this.$router.push({name: "questionBank",
                           params: {courseId: id}})
-    }
+    },
+    handleCurrentChange(){
+      console.log(this.subjectNum)
+      console.log(this.currPage)
+      this.subjects=SimulatedData.slice((this.currPage-1)*10,this.currPage*10)
+    },
   }
 }
 </script>
