@@ -6,15 +6,17 @@ import {
 import {messages} from './Notice'
 import store from "@/store/index.js";
 
-export const UserNotFound=110;
-export const UserPasswordError=120;
-export const UserTokenInvalid=130;
-export const intUserTokenExpire=140;
-export const successCode=0;
-axios.defaults.timeout = 60000;
-axios.defaults.baseURL = "http://120.79.218.158:80/";
+export const UserNotFound = 110;
+export const UserPasswordError = 403;
+export const UserTokenInvalid = 403;
+export const intUserTokenExpire = 140;
+export const successCode = 0;
+export const baseurl= "http://10.16.82.128:8088/"
+axios.defaults.timeout = 6000;
+axios.defaults.baseURL = baseurl;
 axios.defaults.headers["Content-Type"] =
     "applicaion/json";
+// axios.defaults.headers["Access-Control-Allow-Origin"] = "*";
 let loading = null;
 
 /*
@@ -53,7 +55,7 @@ axios.interceptors.response.use(
                 loading.close();
             }
             const res = response;
-            if (res.status===200) {
+            if (res.status === 200) {
                 resolve(res)
                 /*do nothing else   next response will solve these all**/
             } else {
@@ -119,18 +121,7 @@ axios.interceptors.response.use(
  *@param {Object} params [请求时候携带的参数]
  */
 export function get(url, params) {
-    return new Promise((resolve, reject) => {
-        axios
-            .get(url, {
-                params
-            })
-            .then(res => {
-                resolve(res);
-            })
-            .catch(err => {
-                reject(err);
-            });
-    });
+    return axios.get(url, {params});
 }
 
 /*
@@ -140,29 +131,29 @@ export function get(url, params) {
  */
 export function post(url, params) {
     // return new Promise((resolve, reject) => {
-     return    axios
-            .post(url, params);
-            // .then(res => {
-            //         // resolve(res)
-            //         try {
-            //             if (res.status === 200 && res.data.code === 0) {
-            //                 //请求成功
-            //                 resolve(res)
-            //             } else {
-            //                 reject(res)
-            //             }
-            //         } catch (error) {
-            //             reject(res)
-            //         }
-            //     }, (rej) => {
-            //
-            //         console.log(rej)
-            //
-            //
-            //     }
-            // )
-            // .catch(err => {
-            //     reject(err);
-            // });
+    return axios
+        .post(url, params);
+    // .then(res => {
+    //         // resolve(res)
+    //         try {
+    //             if (res.status === 200 && res.data.code === 0) {
+    //                 //请求成功
+    //                 resolve(res)
+    //             } else {
+    //                 reject(res)
+    //             }
+    //         } catch (error) {
+    //             reject(res)
+    //         }
+    //     }, (rej) => {
+    //
+    //         console.log(rej)
+    //
+    //
+    //     }
+    // )
+    // .catch(err => {
+    //     reject(err);
+    // });
     // });
 }

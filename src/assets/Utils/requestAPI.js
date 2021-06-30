@@ -1,25 +1,26 @@
 import {post, UserNotFound, UserPasswordError} from './request';
 import {messages} from "./Notice"
 
-
+/***用户登录接口***/
 export const  login= (that,login)=>
 {
     return new Promise((resolve,reject)=>{
         that.$store.commit('SaveToken', '')
-        post('/user/login',login)
+        post('/login',login)
             .then(
                 //成功回调
                 (res)=>
                 {
+                    console.log()
                     if (res.status===200&&res.data.code===0)
                     {
-                        that.$store.commit("SaveToken",res.data.data.token)
+                        that.$store.commit("SaveToken",res.headers['authorization'])
                         that.$router.push("/mainPage")
                         resolve(res.data.code)
                     }
                     else if (res.status===200&&res.data.code===UserPasswordError||res.data.code===UserNotFound) {
                         /**用户密码存在错误*/
-                        messages("error","账户或者密码错误")
+                        messages("error",res.data.message)
                     }
                 },
                 //失败回调
@@ -30,6 +31,11 @@ export const  login= (that,login)=>
             )
     });
 }
+
+
+
+
+
 
 export const requestForCourse=(url,courseData)=>
 {

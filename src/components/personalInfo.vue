@@ -7,7 +7,8 @@
 
           <el-upload
               ref="uploadImage"
-              action="#"
+              :headers="headers"
+              :action="avatarUploadUrl"
               :multiple="false"
               :file-list="fileList"
               list-type="picture-card"
@@ -35,6 +36,9 @@
         <el-form-item label="学校" :label-width="formLabelWidth">
           <el-input v-model="form.school" autocomplete="off" :placeholder="userInfo.school"></el-input>
         </el-form-item>
+        <el-form-item label="年级" :label-width="formLabelWidth">
+          <el-input v-model="form.grade" autocomplete="off" :placeholder="userInfo.grade"></el-input>
+        </el-form-item>
         <el-form-item label="性别" :label-width="formLabelWidth" style="text-align: left">
           <template>
             <el-radio v-model="form.sex" label="男" size="medium">男</el-radio>
@@ -53,7 +57,7 @@
       <el-col :md="12" :sm="24">
         <div class="infoBlockContainer ">
 
-          <div style="margin-top: 20px">
+          <div style="margin-top: 1%">
 
             <el-row type="flex" class="el-row-personal-info">
               <el-col :span="6">
@@ -97,15 +101,13 @@
       </el-col>
       <el-col :md="12" :sm="24">
         <div class="infoBlockContainer ">
-
-
         </div>
       </el-col>
     </el-row>
 
     <el-row :gutter="30" class="secondRow">
       <el-col :md="12" :sm="24">
-        <div class="infoBlockContainer " >
+        <div class="infoBlockContainer " id="secondRow">
           <bar-chart type="barChart"></bar-chart>
         </div>
       </el-col>
@@ -125,38 +127,40 @@ import barChart from "@/components/echarts/barChart";
 import BarChart from "@/components/echarts/barChart"; // 用户投资类型 柱状图
 import lineChart from "@/components/echarts/lineChart";
 import editImage from "@/assets/editinfo.png"
+import {baseurl, get, post} from "@/assets/Utils/request";
+import store from "@/store";
 // import pieChart from 'cps/echarts/pieChart' // 用户投资类型 饼状图
 // import radarChart from 'cps/echarts/radarChart' // 用户投资类型 雷达图
 // import lineChart from 'cps/echarts/lineChart' // 用户投资类型 折线图
 export default {
   name: "personalInfo",
-  imageUrl: userInfo.avatarUrl,
+
   components: {BarChart, lineChart},
   data() {
     return {
+      fullscreenLoading: false,
+      avatarUploadUrl: baseurl + "student/imageUpload",
+      headers: {Authorization: store.state.token},
       editImage: editImage,
       userInfo: userInfo,
       dialogVisible: false,
       disabled: false,
-      fileList: [{name: 'avatar.jpeg', url: userInfo.avatarUrl}],
-      dialogTableVisible: false,
+      fileList: [{name: 'avatar.jpeg', url:userInfo.avatarUrl}],
       dialogFormVisible: false,
       form: {
-        name: '',
-        studentID: '',
-        class: '',
-        school: '',
+        name: userInfo.name,
+        studentID: userInfo.studentID,
+        grade: userInfo.grade,
+        class: userInfo.class,
+        school: userInfo.school,
         sex: userInfo.sex,
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
       },
       formLabelWidth: '120px'
-
     }
+
+  },
+  mounted() {
+    this.getUserInfo()
 
   },
   methods: {
@@ -165,44 +169,69 @@ export default {
     },
     editCancel() {
       /****清空*****/
-      this.form = {
-        name: '',
-        studentID: '',
-        class: '',
-        school: '',
-        sex: userInfo.sex,
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      }
-      this.fileList=[{name: 'avatar.jpeg', url: userInfo.avatarUrl}],
+      this.getUserInfo()
+      this.form=this.userInfo
+      this.fileList = [{name: 'avatar.jpeg', url: this.userInfo.avatarUrl}]
       this.dialogFormVisible = false
+    },
+    getUserInfo() {
+      get("/student/studentInfo", '').then(
+          (res) => {
+            let userInfo = {
+              name: res.data.data.name,
+              sex: res.data.data.sex,
+              grade: res.data.data.grade,
+              studentID: res.data.data.id,
+              class: res.data.data._class,
+              school: res.data.data.school,
+              avatarUrl: baseurl + 'student/userImage?filename=' + res.data.data.imageUUID
+            }
+            this.userInfo = userInfo
+            this.fileList= [{name: 'avatar.jpeg', url:this.userInfo.avatarUrl}]
+          },
+          () => {
+            //错误异步处理
+          }
+      )
     },
     editSubmit() {
 
       /**********发送网络请求***********/
-      this.$refs.uploadImage.submit()/**提交图像*/
+
+      this.$refs.uploadImage.submit()
+      /**提交图像*/
+      post('/student/studentInfo', this.form).then((res) => {
+        /*需要更新用户信息，重新请求用户信息*/
+        this.getUserInfo()
+        console.log(res)
+
+      }, () => {
 
 
+      })
       /******请求结束，异步任务结束*****/
-      /****清空*****/
-      this.form = {
-        name: '',
-        studentID: '',
-        class: '',
-        school: '',
-        sex: userInfo.sex,
-      }
+      this.form=this.userInfo
+
       /**********close window***********/
       this.dialogFormVisible = false
     },
-    handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw);
+    addressExceed(files, fileList) {
+      this.fileList.pop()
+      this.fileList.push(files[0])
+      console.log(files)
+      console.log(fileList)
     },
+    changeUpload(file) {
 
+      this.fileList.pop()
+      this.fileList.push(file)
+    },
+    onPreview(file) {
+      console.log(file)
+    },
+    beforeUpload(file) {
+      console.log(file)
+    },
     beforeAvatarUpload(file) {
       const isJPG = file.type === 'image/jpeg';
       const isLt2M = file.size / 1024 / 1024 < 2;
@@ -214,31 +243,7 @@ export default {
         this.$message.error('上传头像图片大小不能超过 2MB!');
       }
       return isJPG && isLt2M;
-    },
-    addressExceed(files,fileList){
-      this.fileList.pop()
-      this.fileList.push(files[0])
-      console.log(files)
-      console.log(fileList)
-    },
-    changeUpload(file)
-    {
-
-      this.fileList.pop()
-      this.fileList.push(file)
-
-
-    },
-    onPreview(file)
-    {
-      console.log(file)
-    },
-    beforeUpload(file)
-    {
-      console.log(file)
     }
-
-
 
 
   },
@@ -252,7 +257,6 @@ export default {
 <style scoped>
 .infoContainer {
   height: 100%;
-
 }
 
 .el-row-personal-info {
@@ -272,7 +276,7 @@ export default {
 /*  box-shadow: 20px 2px 2px  #00ff00;*/
 /*}*/
 
-.el-col{
+.el-col {
   height: 100%;
   margin: 10px 0;
 }
@@ -283,14 +287,15 @@ export default {
   padding: 10px 10px 10px 10px;
   background-color: #ffffff;
   box-shadow: 12px 12px 5px #eee;
-  border-radius: 10px;
+  border-radius: 5%;
 }
 
-.firstRow{
+.firstRow {
   height: 40%;
+  min-height: 160px;
 }
 
-.secondRow{
+.secondRow {
   height: 60%;
 }
 
