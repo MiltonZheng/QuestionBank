@@ -61,10 +61,6 @@
             </table>
           </el-col>
 
-          <el-col >
-
-          </el-col>
-
           <el-col v-if="questionList[questions.curr].type!=='pro_completion'" class="questionAnswer">
             <h1>题目答案：</h1><br>
             {{questionList[questions.curr].answer[0]}}
@@ -87,7 +83,8 @@
 
       <el-row class="manipulation">
         <div class="hidden-xs-only">
-          <el-button icon="el-icon-check" type="success" >加入组卷</el-button>
+          <el-button icon="el-icon-check" type="success"
+                     @click="add2Exam(currSubject,2)">加入组卷</el-button>
           <el-button icon="el-icon-edit" type="primary" @click="setDialog">编辑</el-button>
           <el-button icon="el-icon-delete" type="danger" @click="deleteQuestion(questionList[questions.curr].id)">删除</el-button>
         </div>
@@ -194,6 +191,7 @@ export default {
       currQuestion:questions.questionList[questions.curr],
       currType:questions.questionList[questions.curr].type,
       difficulty:difficulty,
+      currSubject: this.$route.params.subjectId,
       form:{
         body:'',
         answer:[],
@@ -241,8 +239,12 @@ export default {
       this.form['body']=curr['body']
       //清空数组，否则答案会积累起来
       this.form.answer.splice(0,this.form.answer.length)
-      for(let index=0;index<curr.answer.length;index++){
-        this.form.answer.push(curr.answer[index])
+      if(curr.type==="pro_completion"){
+        for(let index=0;index<curr.answer.length;index++){
+          this.form.answer.push(curr.answer[index])
+        }
+      }else {
+        this.form.answer.push(curr.answer)
       }
       //this.form['answer']=curr['answer']
       if(curr.type==="pro_choice"){
@@ -314,7 +316,10 @@ export default {
     deleteBlank(index){
       this.form.blank_num--
       this.form.answer.splice(index,1)
-    }
+    },
+    add2Exam(subjectId, questionId){
+      console.log("adding question "+questionId+" to the exam of subject "+subjectId)
+    },
   },
   mounted() {
     console.log("change current question")

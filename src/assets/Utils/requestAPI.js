@@ -1,7 +1,5 @@
 import {post, UserNotFound, UserPasswordError} from './request';
 import {messages} from "./Notice"
-import {questions} from "@/components/simulatedData";
-import {currQuestion} from "@/store/question/editedQuestion";
 
 
 export const  login= (that,login)=>
@@ -74,20 +72,7 @@ export const chooseCourse=()=>
 }
 
 export const requestForQuestion=(questionId)=>{
-    console.log("searching for question...")
-    let questionList=questions['questionList']
-    for(let i=0, l=questionList.length;i<l;i++){
-        if(questionList[i]['id']===questionId){
-            currQuestion['id']=questionList[i]['id']
-            currQuestion['type']=questionList[i]['type']
-            currQuestion['chapterId']=questionList[i]['chapterId']
-            currQuestion['chapterName']=questionList[i]['chapterName']
-            currQuestion['body']=questionList[i]['body']
-            currQuestion['answer']=questionList[i]['answer']
-            console.log(currQuestion)
-            break
-        }
-    }
+    console.log("searching for question"+questionId+"...")
 }
 
 

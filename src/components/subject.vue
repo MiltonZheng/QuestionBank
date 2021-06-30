@@ -16,29 +16,15 @@
           </el-input></el-col>
       </el-row>
       <el-row>
-        <div v-for="Item in subjects" :key="Item.courseId">
+        <div v-for="(Item,index) in subjects" :key="index">
           <el-col :md="12" :sm="24" >
-            <div :key="Item.courseId" class="courseItem selectedCourseItem"
+            <div  class="courseItem selectedCourseItem"
                  @mouseover="handleMouseOver($event)"
                  @mouseleave="handleMouseLeave($event)"
-                 @click="jumpToQuestion(Item.courseId)"
+                 @click="jumpToQuestion(index)"
             >
               <div class="recruit-list-link" >
-                <h4 class="courseTitle">{{ Item.courseName }}(--{{ Item.courseType }})</h4>
-                <p class="recruit-tips">
-                  <span>课时:{{ Item.courseHours }}</span>
-                  <el-divider direction="vertical"></el-divider>
-                  <span>容量:{{ Item.capacity }}</span>
-                  <el-divider direction="vertical"></el-divider>
-                  <span>学分:{{ Item.courseCredit }}</span>
-                  <el-divider direction="vertical"></el-divider>
-                  <span>周次:{{ Item.courseWeek }}</span>
-                  <el-divider direction="vertical"></el-divider>
-                  <span>地点:{{ Item.courseLocation }}</span>
-                </p>
-                <p class="recruit-text">
-                  教师：{{ Item.courseCollege }}-{{ Item.teacherName }}-{{ Item.teacherTitle }};
-                </p>
+                <h4 class="courseTitle">{{ Item.courseName }}</h4>
               </div>
             </div>
           </el-col>
@@ -81,7 +67,7 @@ export default {
     },
     jumpToQuestion(id){
       this.$router.push({name: "questionBank",
-                          params: {courseId: id}})
+                          params: {subjectId: id}})
     },
     handleCurrentChange(){
       console.log(this.subjectNum)

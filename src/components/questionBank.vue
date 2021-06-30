@@ -138,7 +138,10 @@ export default {
       console.log(index)
       questions.curr=(this.currPage-1)*10+index
       console.log(questions.curr)
-      this.$router.push("/mainPage/checkQuestion")
+      console.log("showing the question of subject "+this.$route.params.subjectId)
+      this.$router.push({path: "/mainPage/checkQuestion",
+        params: {subjectId: this.$route.params.subjectId,
+                }})
     },
     addQuestion(){
       this.$router.push("/mainPage/addQuestion")
