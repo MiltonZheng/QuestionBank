@@ -100,15 +100,17 @@
       </el-row>
     </div>
 
+    <!--编辑题目-->
     <el-dialog title="编辑题目" :visible.sync="dialogFormVisible">
-      <el-form v-model="form">
-        <el-form-item label="题目编号" :label-width="formLabelWidth">
+      <el-form >
+        <el-form-item label="编号" :label-width="formLabelWidth">
           <el-input autocomplete="off"
-                    :placeholder="currQuestion.id"></el-input>
+                    :placeholder="questionList[questions.curr].id"></el-input>
         </el-form-item>
         <el-form-item label="题型" :label-width="formLabelWidth">
           <el-input autocomplete="off"
-                    :placeholder="currQuestion.type!=='pro_choice'?currQuestion.type!=='pro_completion'?'简答题':'填空题':'选择题'"></el-input>
+                    :placeholder="questionList[questions.curr].type!=='pro_choice'?
+                                  questionList[questions.curr].type!=='pro_completion'?'简答题':'填空题':'选择题'"></el-input>
         </el-form-item>
         <el-form-item label="难度" :label-width="formLabelWidth">
           <el-select v-model="form.difficulty" >
@@ -116,7 +118,7 @@
                 v-for="(item,index) in difficulty"
                 :key="index"
                 :label="item"
-                :value="item">
+                :value=difficulty[index]>
             </el-option>
           </el-select>
         </el-form-item>
@@ -127,10 +129,45 @@
           <el-form-item label="选项A" :label-width="formLabelWidth">
             <el-input id="editA" v-model="form.A" autocomplete="off" :placeholder="questionList[questions.curr].A"></el-input>
           </el-form-item>
+          <el-form-item label="选项B" :label-width="formLabelWidth">
+            <el-input id="editB" v-model="form.B" autocomplete="off" :placeholder="questionList[questions.curr].B"></el-input>
+          </el-form-item>
+          <el-form-item label="选项C" :label-width="formLabelWidth">
+            <el-input id="editC" v-model="form.C" autocomplete="off" :placeholder="questionList[questions.curr].C"></el-input>
+          </el-form-item>
+          <el-form-item label="选项D" :label-width="formLabelWidth">
+            <el-input id="editD" v-model="form.D" autocomplete="off" :placeholder="questionList[questions.curr].D"></el-input>
+          </el-form-item>
+          <el-form-item label="答案" :label-width="formLabelWidth">
+            <el-select v-model="form.answer[0]" >
+              <el-option
+                  v-for="(item,index) in ['A','B','C','D']"
+                  :key="index"
+                  :label="item"
+                  :value=item>
+              </el-option>
+            </el-select>
+          </el-form-item>
         </div>
-        <el-form-item label="答案" :label-width="formLabelWidth">
-          <el-input id="editAnswer" v-model="form.answer" autocomplete="off" :placeholder="questionList[questions.curr].answer"></el-input>
-        </el-form-item>
+        <div v-if="questionList[questions.curr].type==='pro_completion'">
+          <el-form-item label="答案" :label-width="formLabelWidth">
+          </el-form-item>
+          <template v-for="(answer,index) in form.answer">
+            <el-form-item :key="index" :label="(index+1).toString()" :label-width="formLabelWidth">
+              <el-input v-model="form.answer[index]" autocomplete="off" :placeholder="answer">
+                <el-button slot="append" icon="el-icon-delete" @click="deleteBlank(index)" title="删除此空"></el-button>
+              </el-input>
+            </el-form-item>
+          </template>
+          <el-form-item>
+            <el-button @click="addBlank">新增填空</el-button>
+          </el-form-item>
+        </div>
+        <div v-if="questionList[questions.curr].type==='pro_answer'">
+          <el-form-item label="答案" :label-width="formLabelWidth">
+            <el-input id="editAnswer" v-model="form.answer[0]" type="textarea"  :placeholder="questionList[questions.curr].answer"></el-input>
+          </el-form-item>
+        </div>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="editCancel">取 消</el-button>
@@ -147,7 +184,6 @@ import {difficulty} from "@/components/simulatedData"
 import 'element-ui/lib/theme-chalk/display.css';
 import turnLeft from "@/assets/turnLeft.png"
 import turnRight from "@/assets/turnRight.png"
-//按钮响应式布局
 
 export default {
   name: "checkQuestion",
@@ -160,8 +196,9 @@ export default {
       difficulty:difficulty,
       form:{
         body:'',
-        answer:'',
+        answer:[],
         difficulty:'',
+        blank_num: 1,
         A:'',
         B:'',
         C:'',
@@ -199,21 +236,24 @@ export default {
     },
     setDialog() {
       this.dialogFormVisible = true
-      let curr=this.questions[questions.curr]
+      let curr=this.questionList[this.questions.curr]
       this.form['difficulty']=curr['difficulty']
       this.form['body']=curr['body']
-      this.editedQuestion['answer']=curr['answer']
-      document.getElementById("editBody").value=this.questionList[questions.curr].body
-      let choices=['A','B','C','D']
-      if(curr.type===1){
-        console.log("选择题")
-        for(let choice in choices){
-          this.editedQuestion[choice]=curr[choice]
-        }
-      }else {
-        //delete editedQuestion['A']
+      //清空数组，否则答案会积累起来
+      this.form.answer.splice(0,this.form.answer.length)
+      for(let index=0;index<curr.answer.length;index++){
+        this.form.answer.push(curr.answer[index])
       }
-      console.log(this.editedQuestion)
+      //this.form['answer']=curr['answer']
+      if(curr.type==="pro_choice"){
+        console.log("选择题")
+        this.form['A']=curr['A']
+        this.form['B']=curr['B']
+        this.form['C']=curr['C']
+        this.form['D']=curr['D']
+      }else if(curr.type==="pro_choice"){
+        this.form['blank_num']=curr['blank_num']
+      }
     },
     editCancel() {
       this.$confirm('取消后你的修改不会被保存，确认继续?', '提示', {
@@ -267,6 +307,14 @@ export default {
         questions.curr--
       }
     },
+    addBlank(){
+      this.form.blank_num++
+      this.form.answer.push('')
+    },
+    deleteBlank(index){
+      this.form.blank_num--
+      this.form.answer.splice(index,1)
+    }
   },
   mounted() {
     console.log("change current question")
@@ -309,6 +357,8 @@ td, th{
 .turnPage:hover{
   cursor: pointer;
 }
-
+.el-select{
+  width:100%
+}
 
 </style>

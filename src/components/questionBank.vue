@@ -8,7 +8,7 @@
       </el-breadcrumb>
     </div>
     <el-main>
-      <el-form rel="form" model="form" :inline="true">
+      <el-form rel="form" :inline="true">
         <el-form-item label="难度">
           <el-select v-model="form.difficulty" placeholder="请选择">
             <el-option
@@ -18,7 +18,7 @@
             </el-option>
             <el-option
                 v-for="(item,index) in difficulty"
-                :key="index"
+                :key="index+1"
                 :label="item"
                 :value="item">
             </el-option>

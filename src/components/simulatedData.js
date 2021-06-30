@@ -540,6 +540,7 @@ export const questions= {
             difficulty:'易',
             type: 'pro_completion',
             body: 'this is the body of question type 2, _______, _________',
+            blank_num: 2,
             answer: ['answer1', 'answer2'],
         },
         {
@@ -566,6 +567,7 @@ export const questions= {
             difficulty:'难',
             type: 'pro_completion',
             body: 'this is the body of question type 2, _______, _________',
+            blank_num: 2,
             answer: ['answer1', 'answer2'],
         },
         {
@@ -592,6 +594,7 @@ export const questions= {
             difficulty:'中',
             type: 'pro_completion',
             body: 'this is the body of question type 2, _______, _________',
+            blank_num: 2,
             answer: ['answer1', 'answer2'],
         },
         {
@@ -618,6 +621,7 @@ export const questions= {
             difficulty:'易',
             type: 'pro_completion',
             body: 'this is the body of question type 2, _______, _________',
+            blank_num: 2,
             answer: ['answer1', 'answer2'],
         },
         {
@@ -644,6 +648,7 @@ export const questions= {
             difficulty:'易',
             type: 'pro_completion',
             body: 'this is the body of question type 2, _______, _________',
+            blank_num: 2,
             answer: ['answer1', 'answer2'],
         },
         {
@@ -670,6 +675,7 @@ export const questions= {
             difficulty:'难',
             type: 'pro_completion',
             body: 'this is the body of question type 2, _______, _________',
+            blank_num: 2,
             answer: ['answer1', 'answer2'],
         },
         {
@@ -696,6 +702,7 @@ export const questions= {
             difficulty:'中',
             type: 'pro_completion',
             body: 'this is the body of question type 2, _______, _________',
+            blank_num: 2,
             answer: ['answer1', 'answer2'],
         },
         {
@@ -722,6 +729,7 @@ export const questions= {
             difficulty:'难',
             type: 'pro_completion',
             body: 'this is the body of question type 2, _______, _________',
+            blank_num: 2,
             answer: ['answer1', 'answer2'],
         },
         {

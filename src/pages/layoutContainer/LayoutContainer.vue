@@ -5,14 +5,19 @@
         <Header/>
       </el-header>
 
+      <el-container class="hidden-sm-and-up">
+        <Aside/>
+      </el-container>
+
       <el-container id="withoutHeader">
-        <el-aside style="width: 250px" class="aside">
+        <el-aside style="width: 250px" class="aside hidden-xs-only">
           <Aside/>
         </el-aside>
         <el-main id="contentArea">
           <MainContainer/>
         </el-main>
       </el-container>
+
 
     </el-container>
   </div>

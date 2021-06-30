@@ -122,7 +122,7 @@ export default {
 }
 .hust-img{
   height:60px;
-  margin-left: 60px;
+  margin-left: 20px;
 }
 .el-icon-caret-bottom{
   color: white;

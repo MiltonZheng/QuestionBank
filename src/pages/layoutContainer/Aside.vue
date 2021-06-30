@@ -12,7 +12,7 @@
         >
       <!--router属性可以直接将menu-item的index映射成router的path-->
       <template v-for="index in menu" >
-        <div v-bind:class="index.id!==activeIndex?'':'main-backgroundColor'" :key="index.id">
+        <el-col v-bind:class="index.id!==activeIndex?'':'main-backgroundColor'" :key="index.id" :xs="8">
           <el-menu-item :index="index.id" :key="index.id" class="menuItem"
                         v-bind:style="index.id!==activeIndex?'':'color: #ffffff'">
             <template slot="title">
@@ -22,7 +22,7 @@
               <div class="asideSelectedDivider" v-bind:style="activeIndex!==index.id?'background-color:inherit':'background-color:#ffffff'" ></div>
             </template>
           </el-menu-item>
-        </div>
+        </el-col>
 
 
 
@@ -33,6 +33,7 @@
 
 <script>
 import {menu} from "@/pages/layoutContainer/menu";
+import 'element-ui/lib/theme-chalk/display.css';
 
 export default {
   name: "Aside",
@@ -87,6 +88,11 @@ export default {
   background-color: transparent;
 }
 
+@media screen and (max-width: 768px) {
+  .asideContainer {
+    width:100%
+  }
+}
 
 
 </style>
