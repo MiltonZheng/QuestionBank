@@ -1,7 +1,7 @@
 import {post, UserNotFound, UserPasswordError} from './request';
 import {messages} from "./Notice"
-import {questions} from "@/store/question/questions";
-import {currQuestion} from "@/store/question/currQuestion";
+import {questions} from "@/components/simulatedData";
+import {currQuestion} from "@/store/question/editedQuestion";
 
 /***用户登录接口***/
 export const  login= (that,login)=>
