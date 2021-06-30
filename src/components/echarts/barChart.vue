@@ -1,5 +1,5 @@
 <template>
-  <div id="barChart" style="width: auto;height: 280px"></div>
+  <div id="barChart" style="width: auto;height: 100%"></div>
 </template>
 
 <script>
@@ -24,23 +24,46 @@ export default {
   name: 'barChart',
   data() {
     return {
-      statisticsBySubject:statisticsBySubject
+      statisticsBySubject: statisticsBySubject,
+      chartHeight: 180,
+      myChart: null
+    }
+  },
+  watch: {
+    charHeight() {
+
+    }
+  },
+  computed: {
+    heightCompute: function () {
+      return {
+        "width": "auto",
+        "height": this.chartHeight - 20 + "px"
+      }
     }
   },
   mounted() {
-    this.loadChart();
+
+
+    let that = this
+    this.$nextTick(function () {
+      that.chartHeight = this.$parent.$el.clientHeight
+      document.getElementById('barChart').style.height=that.chartHeight
+      that.loadChart();
+    })
+    window.addEventListener('resize', () => {
+
+
+    })
 
   },
   methods: {
     loadChart() {
-
       var chartDom = document.getElementById('barChart');
       var myChart = echarts.init(chartDom);
       var option;
-
       option = {
         backgroundColor: '#ffffff',
-
         title: {
           text: '习题统计',
           left: 'center',
@@ -69,12 +92,14 @@ export default {
             radius: '75%',
             center: ['50%', '60%'],
             data:
-              // {value: 335, name: '直接访问'},
-              // {value: 310, name: '邮件营销'},
-              // {value: 274, name: '联盟广告'},
-              // {value: 235, name: '视频广告'},
-              // {value: 400, name: '搜索引擎'}
-            statisticsBySubject.sort(function (a, b) { return a.value - b.value; }),
+            // {value: 335, name: '直接访问'},
+            // {value: 310, name: '邮件营销'},
+            // {value: 274, name: '联盟广告'},
+            // {value: 235, name: '视频广告'},
+            // {value: 400, name: '搜索引擎'}
+                statisticsBySubject.sort(function (a, b) {
+                  return a.value - b.value;
+                }),
             roseType: 'radius',
             label: {
               color: 'rgba(44,62,80,0.3)'
@@ -88,7 +113,7 @@ export default {
               length2: 40
             },
             itemStyle: {
-              color: '#c23531',/***********配合主题颜色，需做更改***************/
+              color: '#c23531', /***********配合主题颜色，需做更改***************/
               shadowBlur: 200,
               shadowColor: 'rgba(0, 0, 0, 0.5)'
             },
@@ -102,10 +127,7 @@ export default {
         ]
       };
       myChart.setOption(option)
-      window.addEventListener("resize", () => {
-        myChart.resize()
-      })
-
+      this.myChart = myChart
     },
   },
 }

@@ -24,11 +24,12 @@ export default {
   name: 'lineChart',
   data() {
     return {
-      statisticsBySubject:statisticsByDate
+      statisticsBySubject: statisticsByDate
     }
   },
   mounted() {
     this.loadChart();
+
   },
   methods: {
     loadChart() {
@@ -77,15 +78,15 @@ export default {
             name: '直接访问',
             type: 'bar',
             barWidth: '60%',
-            color:"#c23531",/***********配合主题颜色，需做更改***************/
+            color: "#c23531", /***********配合主题颜色，需做更改***************/
             data: statisticsByDate.textNums
           }
         ]
       };
       myChart.setOption(option)
-      window.addEventListener("resize", () => {
-        myChart.resize()
-      })
+      // window.addEventListener("resize", () => {
+      //   myChart.resize()
+      // })
     },
   },
 }
